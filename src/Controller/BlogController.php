@@ -9,9 +9,9 @@ class BlogController extends AbstractController
 {
 
     /**
-     * @Route("/blog/{page}", name="blog_list", requirements={"page"="\d+")
+     * @Route("/blog/{page?}", name="blog_list", requirements={"page"="\d+"})
      */
-    public function list()
+    public function list($page)
     {
         //...
     }
