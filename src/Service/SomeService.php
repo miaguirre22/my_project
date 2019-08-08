@@ -19,8 +19,13 @@ class SomeService
             'blog_show',
             ['slug' => 'my-blog-post']
         );
+
+        // Generating URLs with Query Strings
+        $url = $this->router->generate('blog', [
+            'page' => 2,
+            'category' => 'Symfony',
+        ]);
+
         // ...
     }
 }
-
-
