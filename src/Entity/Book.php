@@ -6,9 +6,18 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 
 /**
  * @ApiResource()
+ * @ApiFilter(
+ *      PropertyFilter::class, 
+ *      arguments={
+ *          "parameterName": "properties", 
+ *          "overrideDefaultProperties": false,
+ *          "whitelist": {"allowed_property"}
+ *      })
  * @ORM\Entity(repositoryClass="App\Repository\BookRepository")
  */
 class Book
