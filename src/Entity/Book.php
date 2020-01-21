@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -18,6 +19,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *          "overrideDefaultProperties": false,
  *          "whitelist": {"allowed_property"}
  *      })
+ * 
  * @ORM\Entity(repositoryClass="App\Repository\BookRepository")
  */
 class Book
@@ -31,26 +33,36 @@ class Book
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\Isbn
      */
     private $isbn;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * 
+     * @Assert\NotBlank
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @Assert\NotBlank
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\NotBlank
      */
     private $author;
 
     /**
      * @ORM\Column(type="datetime")
+     * 
+     * @Assert\NotNull
      */
     private $publicationDate;
 
